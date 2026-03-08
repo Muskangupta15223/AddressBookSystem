@@ -48,3 +48,22 @@ This model serves as the **foundation for all Address Book operations** that wil
 - The `Contact` class acts as the **core domain object** that will be used by future **service, repository, and controller layers**.
 
 ---
+
+---
+## 🧩 UC2 – Add Contact to Address Book
+
+This use case introduces the functionality to **add contacts to an Address Book using a REST API**.  
+It establishes the initial service structure required to manage contacts across multiple Address Books.
+
+The system now supports storing contact information within a specific Address Book and allows interaction through a backend API.
+
+- Enable the application to **store contacts inside an Address Book**.
+- Provide a **REST API endpoint** to add contact details.
+---
+
+## ⚙️ Implementation
+
+- Implemented an `AddressBook` model that maintains a `List<Contact>` representing all contacts stored in that Address Book.
+- Created an `AddressBookService` responsible for managing Address Books using a `Map<String, AddressBook>`.
+- Added logic to **automatically create an Address Book** if it does not already exist when a contact is added.
+- Implemented an `AddressBookController` that exposes the REST endpoint:
