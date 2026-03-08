@@ -94,3 +94,24 @@ It allows users to modify previously stored contact information while maintainin
 
 - Added an `updateContact()` method in `AddressBookService` to locate a contact using `firstName` and `lastName`, and update the corresponding contact details.
 - Implemented a REST endpoint in `AddressBookController`:
+
+
+---
+## 🧩 UC4 – Delete Contact
+
+This use case adds the functionality to **remove an existing contact from an Address Book using a REST API**.  
+It helps maintain accurate and up-to-date contact records.
+
+---
+
+## 🎯 Purpose
+
+- Allow users to **delete a contact** from an Address Book.
+- Identify the contact using `First Name` and `Last Name`.
+
+---
+
+## ⚙️ Implementation
+
+- Implemented a `deleteContact()` method in `AddressBookService` to locate and remove a contact from `List<Contact>` using `removeIf()`.
+- Added a REST endpoint in `AddressBookController`:
