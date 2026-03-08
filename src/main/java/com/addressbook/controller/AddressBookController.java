@@ -3,7 +3,7 @@ package com.addressbook.controller;
 import com.addressbook.model.Contact;
 import com.addressbook.service.AddressBookService;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.*;
 @RestController
 @RequestMapping("/addressbooks")
 public class AddressBookController {
@@ -44,5 +44,10 @@ public class AddressBookController {
         }
 
         return "Contact not found";
+    }
+    @GetMapping("/{bookName}/contacts")
+    public List<Contact> getContacts(@PathVariable String bookName) {
+
+        return service.getContacts(bookName);
     }
 }
