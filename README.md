@@ -115,3 +115,24 @@ It helps maintain accurate and up-to-date contact records.
 
 - Implemented a `deleteContact()` method in `AddressBookService` to locate and remove a contact from `List<Contact>` using `removeIf()`.
 - Added a REST endpoint in `AddressBookController`:
+
+---
+## 🧩 UC5 – Add Multiple Contacts
+
+This use case extends the Address Book to **store and manage multiple contacts** using Java collection classes.  
+It also introduces the ability to **retrieve all contacts from a specific Address Book**.
+
+---
+
+## 🎯 Purpose
+
+- Allow an Address Book to **store multiple contact entries**.
+- Provide an API to **retrieve all contacts** from a given Address Book.
+
+---
+
+## ⚙️ Implementation
+
+- Used `List<Contact>` inside the `AddressBook` model to maintain multiple contacts.
+- Implemented a `getContacts()` method in `AddressBookService` to return all contacts for a specific Address Book.
+- Added a REST endpoint in `AddressBookController`:
