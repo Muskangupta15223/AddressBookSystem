@@ -67,3 +67,30 @@ The system now supports storing contact information within a specific Address Bo
 - Created an `AddressBookService` responsible for managing Address Books using a `Map<String, AddressBook>`.
 - Added logic to **automatically create an Address Book** if it does not already exist when a contact is added.
 - Implemented an `AddressBookController` that exposes the REST endpoint:
+
+---
+## 🧩 UC3 – Edit Existing Contact
+
+This use case introduces the functionality to **update an existing contact within an Address Book using a REST API**.  
+It allows users to modify previously stored contact information while maintaining the identity of the contact inside the Address Book.
+
+---
+
+## 🎯 Purpose
+
+- Enable users to **update contact details** such as:
+  - `Address`
+  - `City`
+  - `State`
+  - `Zip Code`
+  - `Phone Number`
+  - `Email`
+
+- Provide a mechanism to **identify and locate a contact** using `First Name` and `Last Name` within a specific Address Book.
+
+---
+
+## ⚙️ Implementation
+
+- Added an `updateContact()` method in `AddressBookService` to locate a contact using `firstName` and `lastName`, and update the corresponding contact details.
+- Implemented a REST endpoint in `AddressBookController`:
