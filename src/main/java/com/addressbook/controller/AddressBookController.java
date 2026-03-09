@@ -102,11 +102,13 @@ public class AddressBookController {
 
         return service.countContactsByState();
     }
+    
     @GetMapping("/{bookName}/sort/name")
     public List<Contact> sortByName(@PathVariable String bookName) {
 
         return service.sortContactsByName(bookName);
     }
+    
     @GetMapping("/{bookName}/sort/city")
     public List<Contact> sortByCity(@PathVariable String bookName) {
 
@@ -123,5 +125,21 @@ public class AddressBookController {
     public List<Contact> sortByZip(@PathVariable String bookName) {
 
         return service.sortContactsByZip(bookName);
+    }
+    
+    @PostMapping("/{bookName}/save")
+    public String saveContacts(
+            @PathVariable String bookName,
+            @RequestParam String filePath) {
+
+        service.saveContactsToFile(bookName, filePath);
+
+        return "Contacts saved to file";
+    }
+    
+    @GetMapping("/load")
+    public List<Contact> loadContacts(@RequestParam String filePath) {
+
+        return service.loadContactsFromFile(filePath);
     }
 }
