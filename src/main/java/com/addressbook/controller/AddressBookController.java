@@ -72,7 +72,18 @@ public class AddressBookController {
     @GetMapping("/search/state/{state}")
     public List<Contact> searchByState(@PathVariable String state) {
 
-        return service.searchByState(state);
-        
+        return service.searchByState(state);   
+    }
+
+    @GetMapping("/view/city")
+    public Map<String, List<Contact>> viewByCity() {
+
+        return service.viewPersonsByCity();
+    }
+    
+    @GetMapping("/view/state")
+    public Map<String, List<Contact>> viewByState() {
+
+        return service.viewPersonsByState();
     }
 }
