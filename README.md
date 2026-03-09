@@ -157,3 +157,22 @@ Each Address Book is identified by a unique name and maintains its contacts inde
 - Refactored the service layer to manage Address Books using `Map<String, AddressBook>`.
 - Implemented service methods to **create new Address Books** and **retrieve existing ones**.
 - Added REST endpoints in `AddressBookController`:
+
+---
+## 🧩 UC7 – Prevent Duplicate Contacts
+
+This use case enhances the Address Book system by **preventing duplicate contacts within the same Address Book**.  
+- Each contact is uniquely identified using `First Name` and `Last Name`.
+- Maintain **data integrity** by avoiding duplicate contact entries.
+
+## ⚙️ Implementation
+
+- Added validation logic in `AddressBookService` to check existing contacts before adding a new one.
+- Implemented duplicate detection using **Java Streams** with `anyMatch()` to verify if a contact with the same `firstName` and `lastName` already exists.
+- Throws an **exception** when a duplicate contact is detected, preventing the entry from being added.
+- Added **unit tests** to verify:
+  - Detection of duplicate contacts
+  - Successful addition of unique contacts
+  - Allowing identical contacts in different Address Books
+
+---
