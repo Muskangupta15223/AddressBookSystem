@@ -136,3 +136,24 @@ It also introduces the ability to **retrieve all contacts from a specific Addres
 - Used `List<Contact>` inside the `AddressBook` model to maintain multiple contacts.
 - Implemented a `getContacts()` method in `AddressBookService` to return all contacts for a specific Address Book.
 - Added a REST endpoint in `AddressBookController`:
+
+---
+## 🧩 UC6 – Multiple Address Books
+
+This use case extends the system to **manage multiple Address Books simultaneously**.  
+Each Address Book is identified by a unique name and maintains its contacts independently.
+
+---
+
+## 🎯 Purpose
+
+- Allow the system to organize contacts across different Address Books such as `Personal`, `Work`, or `Family`.
+- Ensure contacts remain **separate within their respective Address Books**.
+
+---
+
+## ⚙️ Implementation
+
+- Refactored the service layer to manage Address Books using `Map<String, AddressBook>`.
+- Implemented service methods to **create new Address Books** and **retrieve existing ones**.
+- Added REST endpoints in `AddressBookController`:
