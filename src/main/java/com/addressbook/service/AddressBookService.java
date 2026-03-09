@@ -5,7 +5,7 @@ import com.addressbook.model.Contact;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 @Service
 public class AddressBookService {
@@ -16,7 +16,7 @@ public class AddressBookService {
 
         AddressBook book = addressBooks.get(bookName);
 
-        if (book == null) {
+        if(book == null) {
             book = new AddressBook(bookName);
             addressBooks.put(bookName, book);
         }
@@ -43,9 +43,11 @@ public class AddressBookService {
             Contact updatedContact) {
 
         AddressBook book = addressBooks.get(bookName);
+
         if (book == null) {
             return null;
         }
+
         for (Contact contact : book.getContacts()) {
 
             if (contact.getFirstName().equals(firstName) &&
@@ -65,7 +67,6 @@ public class AddressBookService {
         return null;
     }
 
-
     public boolean deleteContact(String bookName,
             String firstName,
             String lastName) {
@@ -79,6 +80,7 @@ public class AddressBookService {
         return book.getContacts().removeIf(contact -> contact.getFirstName().equals(firstName) &&
                 contact.getLastName().equals(lastName));
     }
+    
     public List<Contact> getContacts(String bookName) {
 
         AddressBook book = addressBooks.get(bookName);
@@ -89,7 +91,7 @@ public class AddressBookService {
 
         return book.getContacts();
     }
-    
+
     public AddressBook createAddressBook(String name) {
 
         if(addressBooks.containsKey(name)) {
@@ -105,9 +107,11 @@ public class AddressBookService {
     public Map<String, AddressBook> getAllAddressBooks() {
         return addressBooks;
     }
+    
     public AddressBook getAddressBook(String name) {
-    	return addressBooks.get(name);
+        return addressBooks.get(name);
     }
+    
     public List<Contact> searchByCity(String city) {
 
         return addressBooks.values()
@@ -115,7 +119,6 @@ public class AddressBookService {
                 .flatMap(book -> book.getContacts().stream())
                 .filter(contact -> contact.getCity().equalsIgnoreCase(city))
                 .collect(Collectors.toList());
-        
     }
     
     public List<Contact> searchByState(String state) {
@@ -124,7 +127,7 @@ public class AddressBookService {
                 .stream()
                 .flatMap(book -> book.getContacts().stream())
                 .filter(contact -> contact.getState().equalsIgnoreCase(state))
-                .collect(Collectors.toList());   
+                .collect(Collectors.toList());
     }
     
     public Map<String, List<Contact>> viewPersonsByCity() {
@@ -141,5 +144,27 @@ public class AddressBookService {
                 .stream()
                 .flatMap(book -> book.getContacts().stream())
                 .collect(Collectors.groupingBy(Contact::getState));
+    }
+    
+    public Map<String, Long> countContactsByCity() {
+
+        return addressBooks.values()
+                .stream()
+                .flatMap(book -> book.getContacts().stream())
+                .collect(Collectors.groupingBy(
+                        Contact::getCity,
+                        Collectors.counting()
+                ));
+    }
+    
+    public Map<String, Long> countContactsByState() {
+
+        return addressBooks.values()
+                .stream()
+                .flatMap(book -> book.getContacts().stream())
+                .collect(Collectors.groupingBy(
+                        Contact::getState,
+                        Collectors.counting()
+                ));
     }
 }

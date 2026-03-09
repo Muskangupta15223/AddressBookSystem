@@ -5,6 +5,7 @@ import com.addressbook.model.Contact;
 import com.addressbook.service.AddressBookService;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
+
 @RestController
 @RequestMapping("/addressbooks")
 public class AddressBookController {
@@ -22,6 +23,7 @@ public class AddressBookController {
 
         return service.addContact(name, contact);
     }
+
     @PutMapping("/{bookName}/contacts")
     public Contact updateContact(
             @PathVariable String bookName,
@@ -46,11 +48,13 @@ public class AddressBookController {
 
         return "Contact not found";
     }
+    
     @GetMapping("/{bookName}/contacts")
     public List<Contact> getContacts(@PathVariable String bookName) {
 
         return service.getContacts(bookName);
     }
+    
     @PostMapping("/{name}")
     public AddressBook createAddressBook(@PathVariable String name) {
 
@@ -62,19 +66,19 @@ public class AddressBookController {
 
         return service.getAllAddressBooks();
     }
+    
     @GetMapping("/search/city/{city}")
     public List<Contact> searchByCity(@PathVariable String city) {
 
         return service.searchByCity(city);
-        
     }
     
     @GetMapping("/search/state/{state}")
     public List<Contact> searchByState(@PathVariable String state) {
 
-        return service.searchByState(state);   
+        return service.searchByState(state);
     }
-
+    
     @GetMapping("/view/city")
     public Map<String, List<Contact>> viewByCity() {
 
@@ -85,5 +89,17 @@ public class AddressBookController {
     public Map<String, List<Contact>> viewByState() {
 
         return service.viewPersonsByState();
+    }
+    
+    @GetMapping("/count/city")
+    public Map<String, Long> countByCity() {
+
+        return service.countContactsByCity();
+    }
+    
+    @GetMapping("/count/state")
+    public Map<String, Long> countByState() {
+
+        return service.countContactsByState();
     }
 }
