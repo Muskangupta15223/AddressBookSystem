@@ -177,15 +177,15 @@ This use case enhances the Address Book system by **preventing duplicate contact
 
 ---
 
-- 🧩 **UC8 – Search Person by City or State :**
+## 🧩 UC8 – Search Person by City or State :
   - Introduces the ability to search contacts by city or state across multiple Address Books.
   - Enables efficient filtering of contacts based on location information.
 
-  **Purpose**
+## 🎯 Purpose
   - Allow users to quickly find contacts belonging to a specific city or state.
   - Support searching across all Address Books in the system.
 
-  **Implementation**
+## ⚙️ Implementation
   - Implemented search functionality in `AddressBookService` using Java Streams.
   - Combined contacts from all Address Books and filtered them based on the specified city or state.
   - Added REST endpoints in `AddressBookController`:
@@ -198,15 +198,15 @@ This use case enhances the Address Book system by **preventing duplicate contact
 
 ---
 
-- 🧩 **UC9 – View Persons by City or State :**
+## 🧩 UC9 – View Persons by City or State :
   - Introduces the ability to view contacts grouped by city or state across Address Books.
   - Organizes contacts based on location for easier viewing and analysis.
 
-  **Purpose**
+## 🎯 Purpose
   - Allow users to see all contacts grouped by their city or state.
   - Provide a structured way to organize contacts based on location.
 
-  **Implementation**
+## ⚙️ Implementation
   - Implemented grouping logic in `AddressBookService` using Java Streams and `Collectors.groupingBy()`.
   - Contacts are grouped into a dictionary structure:
     ```
