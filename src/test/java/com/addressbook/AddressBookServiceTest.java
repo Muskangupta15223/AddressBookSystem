@@ -27,7 +27,6 @@ public class AddressBookServiceTest {
         AddressBookService service = new AddressBookService();
 
         Contact contact = createContact();
-
         Contact result = service.addContact("personal", contact);
 
         assertEquals("Muskan", result.getFirstName());
