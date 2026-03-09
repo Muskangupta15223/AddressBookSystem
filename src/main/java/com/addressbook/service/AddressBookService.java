@@ -115,6 +115,7 @@ public class AddressBookService {
                 .flatMap(book -> book.getContacts().stream())
                 .filter(contact -> contact.getCity().equalsIgnoreCase(city))
                 .collect(Collectors.toList());
+        
     }
     
     public List<Contact> searchByState(String state) {
@@ -124,5 +125,6 @@ public class AddressBookService {
                 .flatMap(book -> book.getContacts().stream())
                 .filter(contact -> contact.getState().equalsIgnoreCase(state))
                 .collect(Collectors.toList());
+        
     }
 }
