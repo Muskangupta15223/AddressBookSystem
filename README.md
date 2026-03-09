@@ -219,4 +219,37 @@ This use case enhances the Address Book system by **preventing duplicate contact
     ```
   - Added unit tests to verify grouping functionality, handling of multiple Address Books, and scenarios with empty datasets.
 
+----
+
+# 🧩 UC10 – Count Contacts by City or State :**
+  - Introduces the ability to count the number of contacts grouped by city or state across Address Books.
+  - Provides statistical insight into how contacts are distributed across locations.
+
+  ## Purpose
+  - Allow users to determine how many contacts belong to each city or state.
+  - Provide aggregated contact statistics across all Address Books.
+
+  ## Implementation
+  - Implemented counting logic in `AddressBookService` using Java Streams with `Collectors.groupingBy()` and `Collectors.counting()`.
+  - Contacts are aggregated into the structure:
+  - Added REST endpoints in `AddressBookController`:
+  - Added unit tests to validate counting across multiple Address Books, handling of empty datasets, and contacts belonging to different locations.
+
+---
+
+## 🧩 UC11 –Sort Contacts Alphabetically by Name :
+  - Introduces the ability to sort contacts alphabetically by their first name within an Address Book.
+  - Improves usability by presenting contacts in an organized and readable order.
+
+## 🎯 Purpose
+  - Allow users to view contacts arranged alphabetically for easier navigation.
+  - Provide a consistent way to display contact lists within an Address Book.
+
+## ⚙️ Implementation
+  - Implemented sorting logic in `AddressBookService` using Java Streams and `Comparator.comparing()` based on the `firstName` field.
+  - Added a REST endpoint in `AddressBookController`:
+    ```
+    GET /addressbooks/{bookName}/sort/name
+    ```
+  - Override the `toString()` method in the `Contact` model to produce readable output when displaying contact entries.
 ---
