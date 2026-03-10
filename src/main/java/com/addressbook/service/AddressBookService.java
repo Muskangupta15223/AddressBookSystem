@@ -2,6 +2,7 @@ package com.addressbook.service;
 
 import com.addressbook.model.AddressBook;
 import com.addressbook.model.Contact;
+import com.addressbook.util.CSVUtil;
 import com.addressbook.util.FileUtil;
 
 import org.springframework.stereotype.Service;
@@ -241,5 +242,21 @@ public class AddressBookService {
     public List<Contact> loadContactsFromFile(String filePath) {
 
         return FileUtil.readContactsFromFile(filePath);
+    }
+    public void saveContactsToCSV(String bookName, String filePath) {
+
+        AddressBook book = addressBooks.get(bookName);
+
+        if(book == null) {
+            return;
+        }
+
+        CSVUtil.writeContactsToCSV(filePath, book.getContacts());
+    }
+
+
+    public List<Contact> loadContactsFromCSV(String filePath) {
+
+        return CSVUtil.readContactsFromCSV(filePath);
     }
 }
