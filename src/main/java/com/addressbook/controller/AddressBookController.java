@@ -173,4 +173,9 @@ public class AddressBookController {
 
         return service.loadContactsFromJSON(filePath);
     }
+    @GetMapping("/db/contacts")
+    public List<Contact> getContactsFromDB() {
+
+        return service.getContactsFromDatabase();
+    }
 }
