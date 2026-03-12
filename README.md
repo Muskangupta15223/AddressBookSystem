@@ -353,3 +353,16 @@ This use case enhances the Address Book system by **preventing duplicate contact
     - `CSVStorage` – Supports CSV persistence using the OpenCSV library.
 
 ---
+ # 🧩 UC17 – Updating Contact Information in the Database
+ 
+ ## Purpose:
+   - Enable the system to modify existing contact records stored in the database.
+   - Support updating specific attributes, such as city, based on a contact’s name.
+ 
+  ## Implementation:
+   - Extended ContactRepository to execute SQL UPDATE statements using JDBC PreparedStatement.
+   - Added logic to update the city of a contact identified by firstName and lastName.
+   - Exposed a REST endpoint in AddressBookController:
+         PUT /addressbooks/db/update-city
+   - Added integration tests to verify successful updates and correct JDBC behavior.
+ 
